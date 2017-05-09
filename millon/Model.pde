@@ -9,7 +9,7 @@ class Model extends FileGame{
     level = 0;
     super.setNumberQuestion(level);
     mas = new boolean[countQuestion()];
-    timer = new Timer(5000);
+    timer = new Timer(1000);
     timer.startTimer();
   }
   int countQuestion(){
@@ -24,7 +24,6 @@ class Model extends FileGame{
     if(tmr.timeOut()){
       nextQuestion();
       register = false;
-      view.buttonsEnable(true);
     }
   }
  void next(){
@@ -32,6 +31,19 @@ class Model extends FileGame{
      next(timer);
      
    }
+ }
+ 
+int[] cont_right(){
+   int[] count = new int[2];
+  
+   for(int i = 0; i < countQuestion(); i++){
+     if(mas[i]){
+       count[0] ++;
+     }else{
+       count[1] ++;
+     }
+   }
+   return count;
  }
   
 }

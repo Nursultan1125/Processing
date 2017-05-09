@@ -22,19 +22,23 @@ void draw()
 {
   background(0);
   view.show();
-  model.next();
-  
-  
-  
+  if(model.level == model.countQuestion()){
+    view.rezult = false;
+  }
 }
 
 
 void mouseReleased()
-{
-   println(view.isEvent().getText().equals(String.valueOf(model.rightOption()) + ":"));
+{  
+  model.mas[model.level] = view.isEvent().getText().equals(String.valueOf(model.rightOption()) + ":");
    if(view.isEvent().isPressed()){
-     model.register = true;
-     view.buttonsEnable(false);
+     if(view.isEvent().getText().equals(String.valueOf(model.rightOption()) + ":")){
+       view.isEvent().setBackgroundColor(color(0, 255, 0));
+     }else{
+       view.isEvent().setBackgroundColor(color(255, 0, 0));
+     }
+     model.nextQuestion();
    }
+   view.initButtons();
    
 }

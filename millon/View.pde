@@ -15,42 +15,55 @@ class View{
   
   PImage bgnImage;
   
+  boolean rezult;
+  
   boolean mouseReleasedBool = false;
   
-  FileGame file;
+  Model file;
   String strQuestion = "";
   
   
-  View(String bg, FileGame file){
+  View(String bg, Model file){
 
      bgnImage = loadImage(bg); 
      this.file = file;
      initButtons();
-     
+     rezult = true;
   }
   
   void show(){
-    image(bgnImage,0,0,width,height);
-    strQuestion =  file.getQuestion();
-    fill(#0A7CF2,100);
-    rect(rectX,rectY,500,180,15);
-    
-    //println(eventProig.position(), eventProig.length(), answer);
-    fill(#F0070B);
-    textSize(20);
-    text("Вопрос № " + file.getNumberQuestion(),300,80);
-    fill(#56F20A);
-    textSize(20);
-    text(strQuestion,rectX + 50,rectY + 60,rectW-50,rectH-50);
-    optionA.setText("A: " + file.getOptionA());
-    optionB.setText("B: " + file.getOptionB());
-    optionC.setText("C: " + file.getOptionC());
-    optionD.setText("D: " + file.getOptionD());
-     
-    optionA.show();
-    optionB.show();
-    optionC.show();
-    optionD.show();
+    if(rezult){
+      image(bgnImage,0,0,width,height);
+      strQuestion =  file.getQuestion();
+      fill(#0A7CF2,100);
+      rect(rectX,rectY,500,180,15);
+      
+      //println(eventProig.position(), eventProig.length(), answer);
+      fill(#F0070B);
+      textSize(20);
+      text("Вопрос № " + file.getNumberQuestion(),300,80);
+      fill(#56F20A);
+      textSize(20);
+      text(strQuestion,rectX + 50,rectY + 60,rectW-50,rectH-50);
+      optionA.setText("A: " + file.getOptionA());
+      optionB.setText("B: " + file.getOptionB());
+      optionC.setText("C: " + file.getOptionC());
+      optionD.setText("D: " + file.getOptionD());
+       
+      optionA.show();
+      optionB.show();
+      optionC.show();
+      optionD.show();
+    }
+    else
+    {
+      image(bgnImage,0,0,width,height);
+      fill(#0A7CF2,100);
+      rect(rectX,rectY,500,180,15);
+      fill(#56F20A);
+      textSize(20);
+      text("Результат: " + file.cont_right()[0] + " правильных из " + file.countQuestion(),rectX + 50,rectY + 60,rectW-50,rectH-50);
+    }
 
   }
   
