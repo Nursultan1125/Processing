@@ -3,6 +3,7 @@ import ddf.minim.*;
 Minim minim;
 
 Model model;
+AudioPlayer player;
 
 int level = 0;
 View view;
@@ -11,10 +12,13 @@ View view;
 void setup()
 {
   size(700,400);
+  minim = new Minim(this);
   model = new Model( "db/text.csv");
   view = new View("img/bgnImage.jpg", model);
   print(model.countQuestion());
   model.timer.startTimer();
+  player = minim.loadFile("mel/vybor.mp3");
+  player.loop();
 }
 
 

@@ -1,0 +1,11 @@
+size(500,500);
+fill(#FCF000);
+strokeWeight(5);
+ellipse(250,250,400,400);
+fill(#FC5242);
+ellipse(150, 150, 50, 70);
+ellipse(350,150, 50,70);
+fill(#0A2BFA);
+ellipse(250,400,200,50);
+fill(#3DCE34);
+rect(225,200,50,100);

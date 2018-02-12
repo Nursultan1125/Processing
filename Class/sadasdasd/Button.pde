@@ -114,7 +114,7 @@ class Button
    {
     fill(textClr);
     textSize(textSize);
-    text(text,x + size.widthr*0.05,y + size.heightr*0.1, size.widthr,size.heightr);
+    text(text,x + size.widthr*0.10,y + size.heightr*0.75);
    }else
    {
      image(icon,x+6,y+6,size.widthr-12,size.heightr-12);
@@ -179,7 +179,8 @@ void setIcon(String str)
 
   boolean isRange()
   {
-       if(mouseX > x && mouseX  < x + size.widthr && mouseY > y && mouseY < y + size.heightr )
+       if(mouseX > x && mouseX  < x + size.widthr && mouseY > y
+       && mouseY < y + size.heightr )
       {
         return true;
       }
@@ -260,12 +261,25 @@ void setIcon(String str)
     {
       transparencyMouse = t;
     }
-    void setTextSize(float t){
-      textSize = t;
-    }
-    
-    float getTextSize(){
-      return textSize;
-    }
 
+}
+
+
+
+
+
+class Size
+{
+  float widthr;
+  float heightr;
+  float rectangle;
+  float scl;
+  
+  Size()
+  {
+    widthr = 55;
+    heightr = 23;
+    rectangle = 5;
+    scl = 2;
+  }
 }

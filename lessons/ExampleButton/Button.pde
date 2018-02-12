@@ -114,7 +114,7 @@ class Button
    {
     fill(textClr);
     textSize(textSize);
-    text(text,x + size.widthr*0.05,y + size.heightr*0.1, size.widthr,size.heightr);
+    text(text,x + size.widthr*0.10,y + size.heightr*0.75);
    }else
    {
      image(icon,x+6,y+6,size.widthr-12,size.heightr-12);
@@ -259,13 +259,6 @@ void setIcon(String str)
     void setTransparencyMouse(float t)
     {
       transparencyMouse = t;
-    }
-    void setTextSize(float t){
-      textSize = t;
-    }
-    
-    float getTextSize(){
-      return textSize;
     }
 
 }

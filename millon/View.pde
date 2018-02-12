@@ -60,9 +60,12 @@ class View{
       image(bgnImage,0,0,width,height);
       fill(#0A7CF2,100);
       rect(rectX,rectY,500,180,15);
+      fill(#E81515);
+      textSize(30);
+      text("Результат: ", rectX + 180, rectY + 50);
       fill(#56F20A);
       textSize(20);
-      text("Результат: " + file.cont_right()[0] + " правильных из " + file.countQuestion(),rectX + 50,rectY + 60,rectW-50,rectH-50);
+      text(file.cont_right()[0] + " правильных ответыфвывывыф " + file.countQuestion() + " вопросов.",rectX + 60,rectY + 90,rectW-50,rectH-50);
     }
 
   }
@@ -75,7 +78,7 @@ class View{
     optionD = new Button();
     
     optionA.setWidth(280);
-    optionA.setHeight(40);
+    optionA.setHeight(50);
     optionB.setWidth(optionA.getWidth());
     optionB.setHeight(optionA.getHeight());
     optionC.setWidth(optionA.getWidth());
@@ -88,9 +91,9 @@ class View{
     optionB.setX(optionA.getX() + 340);
     optionB.setY(optionA.getY());
     optionC.setX(optionA.getX());
-    optionC.setY(optionA.getY() + 50);
+    optionC.setY(optionA.getY() + 60);
     optionD.setX(optionA.getX() + 340);
-    optionD.setY(optionA.getY() + 50);
+    optionD.setY(optionA.getY() + 60);
     
     optionA.setRectangle(15);
     optionB.setRectangle(optionA.getRectangle());
@@ -111,6 +114,11 @@ class View{
     optionB.setTextColor(#0E057C);
     optionC.setTextColor(#0E057C);
     optionD.setTextColor(#0E057C);
+    
+    optionA.setTextSize(13);
+    optionB.setTextSize(optionA.getTextSize());
+    optionC.setTextSize(optionA.getTextSize());
+    optionD.setTextSize(optionA.getTextSize());
   }
   
   Button isEvent(){

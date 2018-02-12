@@ -5,6 +5,8 @@ class Button
   Size size;
   color bgClr;
   color mouseClr;
+  color strokeClr;
+  float strokeWeight;
   String text;
   color textClr;
   float textSize;
@@ -30,6 +32,7 @@ class Button
     mouseClr = #55B1FF;
     text = ""; 
     textClr = color(0);
+    strokeClr = color(0);
     textSize = 15;
     textClr1 = #EAD002;
     hideBool = false;
@@ -51,6 +54,7 @@ class Button
     setAnabl = true ;
     transparency = 255;
     transparencyMouse = 255;
+    strokeWeight = 1;
   }
   Button(String str,boolean b)
   {
@@ -65,66 +69,72 @@ class Button
     hideBool = false ;
     setAnabl = true ;
     
-      icon = loadImage(str);
-      boolIcon = b;
-      transparency = 255;
-      transparencyMouse = 255;
+    icon = loadImage(str);
+    boolIcon = b;
+    transparency = 255;
+    transparencyMouse = 255;
+    strokeWeight = 1;
     
   }
   
   
   void show(){
-     if(hideBool==false)
+    if(hideBool==false)
     {
-      
-    
-    
-   if(setAnabl == true)
-   {
-     if(isRange())
-    {
-      fill(mouseClr,transparencyMouse);
-      if(mousePressed)
+      if(setAnabl == true)
       {
-        boolPressed = true;
+        if(isRange())
+        {
+          fill(mouseClr,transparencyMouse);
+          if(mousePressed)
+          {
+            boolPressed = true;
+          }
+          else
+          {
+            boolPressed = false;
+          }
+        }else
+        {
+          fill(bgClr,transparency);
+        }
+      }else{
+        fill(100);
       }
-      else
+      stroke(strokeClr);
+      strokeWeight(strokeWeight);
+      if(boolPressed )
       {
-        boolPressed = false;
+        
+        rect(x+size.scl,y+size.scl,size.widthr-2*size.scl,
+        size.heightr-2*size.scl,size.rectangle);
+        
+      }else
+      {  
+        rect(x,y,size.widthr,size.heightr,size.rectangle);
       }
-    }else
-    {
-      fill(bgClr,transparency);
-    }
-    }else
-    {
-      fill(100);
-    }
-    if(boolPressed )
-    {
-      
-      rect(x+size.scl,y+size.scl,size.widthr-2*size.scl,
-      size.heightr-2*size.scl,size.rectangle);
-      
-    }else
-    {  
-      rect(x,y,size.widthr,size.heightr,size.rectangle);
-    }
-   if(boolIcon == false)
-   {
-    fill(textClr);
-    textSize(textSize);
-    text(text,x + size.widthr*0.05,y + size.heightr*0.1, size.widthr,size.heightr);
-   }else
-   {
-     image(icon,x+6,y+6,size.widthr-12,size.heightr-12);
-   }
-   }
-   if(!isRange())
-   {
-     boolPressed = false;
-   }
+     if(boolIcon == false)
+     {
+      fill(textClr);
+      textSize(textSize);
+      text(text,x + size.widthr*0.10,y + size.heightr*0.75);
+     }else
+     {
+       image(icon,x+6,y+6,size.widthr-12,size.heightr-12);
+     }
+     }
+     if(!isRange())
+     {
+       boolPressed = false;
+     }
     
+  }
+  void setStrokeColor(color clr){
+    strokeClr = clr;
+  }
+  
+  color getStrokeColor(){
+    return strokeClr;
   }
   
   void setMouseColor(color clr)
@@ -148,8 +158,7 @@ class Button
   
   boolean isPressed()
   {
-    return boolPressed;
-    
+    return boolPressed;    
   }
   
   String getText()
@@ -166,16 +175,16 @@ class Button
   {
     setAnabl = b;
   }
-void hide(boolean v)
-{
-  hideBool = v;
-}
+  void hide(boolean v)
+  {
+    hideBool = v;
+  }
 
-void setIcon(String str)
-{
-  icon = loadImage(str);
-  boolIcon = true;
-}
+  void setIcon(String str)
+  {
+    icon = loadImage(str);
+    boolIcon = true;
+  }
 
   boolean isRange()
   {
@@ -187,16 +196,16 @@ void setIcon(String str)
       {
          return false; 
       }
-    }
+   }
     
-    float getX()
-    {
+   float getX()
+   {
       return x;
-    }
-     float getY()
-    {
+   }
+   float getY()
+   {
       return y;
-    }
+   }
     
     void setX(float _x)
     {
@@ -235,6 +244,14 @@ void setIcon(String str)
       return size.rectangle;
     }
     
+    void setScl(float scl){
+      size.scl = scl;
+    }
+    
+    float getScl(){
+      return size.scl;
+    }
+    
     void setTransparency(float t)
     {
       transparency = t;
@@ -255,17 +272,24 @@ void setIcon(String str)
       return textClr;
     }
     
-    
     void setTransparencyMouse(float t)
     {
       transparencyMouse = t;
     }
-    void setTextSize(float t){
-      textSize = t;
+    
+    float getTransparencyMouse()
+    {
+      return transparencyMouse;
     }
     
-    float getTextSize(){
-      return textSize;
+    float getStrokeWeigth(){
+      return strokeWeight;
     }
+    
+    void setStrokeWeight(float w){
+      strokeWeight = w;
+    }
+    
+    
 
 }
